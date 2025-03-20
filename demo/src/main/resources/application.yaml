@@ -1,0 +1,24 @@
+spring:
+  application:
+    name: demo
+
+  messages:
+    encoding: UTF-8
+
+  datasource:
+    url: jdbc:mysql://mysql:3306/main_db?useSSL=false&serverTimezone=UTC
+    username: ${MYSQL_USER}
+    password: ${MYSQL_PASSWORD}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
+
+server: 
+  servlet:
+    encoding:
+      charset:  UTF-8
