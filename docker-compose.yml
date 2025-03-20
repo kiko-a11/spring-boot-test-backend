@@ -4,9 +4,8 @@ services:
   backend:
     build: ./demo/
     restart: always
-    environment:
-      MYSQL_USER: "${MYSQL_USER}"
-      MYSQL_PASSWORD: "${MYSQL_PASSWORD}"
+    env_file:
+      - .env
     ports:
       - "8080:8080"
     depends_on:
@@ -17,11 +16,8 @@ services:
     image: mysql:8.0
     container_name: mysql_server
     restart: always
-    environment:
-      MYSQL_ROOT_PASSWORD: "${MYSQL_PASSWORD}"
-      MYSQL_DATABASE: main_db
-      MYSQL_USER: "${MYSQL_USER}"
-      MYSQL_PASSWORD: "${MYSQL_PASSWORD}"
+    env_file:
+      - .env
     command: --default-authentication-plugin=mysql_native_password
     volumes:
       - mysql_data:/var/lib/mysql
