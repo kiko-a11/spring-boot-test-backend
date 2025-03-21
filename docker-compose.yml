@@ -11,6 +11,8 @@ services:
     depends_on:
       mysql:
         condition: service_healthy
+    networks:
+      - app_net
 
   mysql:
     image: mysql:8.0
@@ -26,6 +28,12 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
+    networks:
+      - app_net
 
 volumes:
   mysql_data:
+
+networks:
+  app_net:
+    external: true
